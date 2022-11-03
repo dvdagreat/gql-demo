@@ -1,0 +1,80 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  createPlayer(player: PlayerRequest!): Player!
+  createTeam(team: TeamRequest!): Team!
+  removePlayer(id: Int!): Player!
+  removeTeam(id: Int!): Team!
+  updatePlayer(updatePlayerInput: UpdatePlayerInput!): Player!
+  updateTeam(updateTeamInput: UpdateTeamInput!): Team!
+}
+
+type Player {
+  """player first name"""
+  first_name: String!
+
+  """player id"""
+  id: Int
+
+  """player last name"""
+  last_name: String!
+  team: Team!
+
+  """team associated with the player"""
+  team_id: Float!
+}
+
+input PlayerRequest {
+  """first name of the player"""
+  first_name: String!
+
+  """last name of the player"""
+  last_name: String!
+
+  """team id of associated team"""
+  team_id: Int!
+}
+
+type Query {
+  player(id: Int!): Player!
+  players: [Player!]!
+  team(id: Int!): Team!
+  teams: [Team!]!
+}
+
+type Team {
+  """team id"""
+  id: Int
+
+  """team name"""
+  name: String!
+
+  """players associated with the team"""
+  players: [Player!]!
+}
+
+input TeamRequest {
+  """name of the team"""
+  name: String!
+}
+
+input UpdatePlayerInput {
+  """first name of the player"""
+  first_name: String
+  id: Int!
+
+  """last name of the player"""
+  last_name: String
+
+  """team id of associated team"""
+  team_id: Int
+}
+
+input UpdateTeamInput {
+  id: Int!
+
+  """name of the team"""
+  name: String
+}
